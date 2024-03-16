@@ -27,16 +27,14 @@ class InvoiceAPITest(TestCase):
         }
         response = self.client.post('/invoices/', data, format='json')
         
-        # Print request payload
+
         print("Request payload:", data)
         
-        # Print response data
         print("Response data:", response.data)
         
-        # Print response status code
+ 
         print("Response status code:", response.status_code)
 
-        # Check for validation errors in response data
         if response.status_code == 400:
             print("Validation errors:", response.data)
 
@@ -62,7 +60,7 @@ class InvoiceAPITest(TestCase):
         response = self.client.put(f'/invoices/{invoice.pk}/', data, format='json')
         self.assertEqual(response.status_code, 200)
         updated_invoice = Invoice.objects.get(pk=invoice.pk)
-        self.assertEqual(str(updated_invoice.date), '2024-03-16')  # Modify this line
+        self.assertEqual(str(updated_invoice.date), '2024-03-16')  
         self.assertEqual(updated_invoice.customer_name, 'Updated Customer')
 
 

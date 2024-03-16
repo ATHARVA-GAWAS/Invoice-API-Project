@@ -17,8 +17,8 @@ class InvoiceDetailViewSet(viewsets.ModelViewSet):
     serializer_class = InvoiceDetailSerializer
 
     def create(self, request, *args, **kwargs):
-        invoice_id = request.data.get('invoice')  # Assuming 'invoice' field is provided in request data
+        invoice_id = request.data.get('invoice')  
         invoice = get_object_or_404(Invoice, pk=invoice_id)
-        request.data['invoice'] = invoice.id  # Associate the 'invoice_id' with the 'invoice' field
+        request.data['invoice'] = invoice.id 
         return super().create(request, *args, **kwargs)
 
